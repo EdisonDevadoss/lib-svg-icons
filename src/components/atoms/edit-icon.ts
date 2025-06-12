@@ -5,14 +5,13 @@ import editSvg from '../../assets/edit.svg?raw';
 
 @customElement('edit-icon')
 export class EditIcon extends IconBase {
-  protected render(): unknown {
+  render() {
     return html`
       <span 
         class=${this.getBaseClasses()}
         title=${this.title}
         ?disabled=${this.disabled}
-        .innerHTML=${editSvg}
-      ></span>
+      >${editSvg}</span>
     `;
   }
 }

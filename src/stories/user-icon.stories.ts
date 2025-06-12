@@ -7,7 +7,7 @@ const meta = {
   component: 'user-icon',
   argTypes: {
     size: {
-      control: 'text',
+      control: 'number',
       description: 'Size of the icon in pixels',
       defaultValue: '24'
     },

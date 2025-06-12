@@ -1,6 +1,7 @@
 import { LitElement, css } from 'lit';
 import { unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
+import { classMap } from 'lit/directives/class-map.js';
 import tailwindStyles from '../../tailwind.css?inline';
 
 export class IconBase extends LitElement {
@@ -8,22 +9,32 @@ export class IconBase extends LitElement {
 
   @property({ type: String }) size = '24';
   @property({ type: String }) color = 'currentColor';
-  @property({ type: String }) stroke = 'none';
+  @property({ type: String }) stroke = 'transparent';
   @property({ type: String }) strokeWidth = '0';
   @property({ type: Number }) rotation = 0;
   @property({ type: Boolean }) disabled = false;
   @property({ type: String }) title = '';
 
-  protected getBaseClasses(): string {
-    return [
-      this.disabled ? 'opacity-50 cursor-not-allowed' : '',
-      `w-[${this.size}px] h-[${this.size}px]`,
-      `text-[${this.color}]-500`,
-      `stroke-[${this.stroke}]`,
-      `stroke-[${this.strokeWidth}px]`,
-      `rotate-[${this.rotation}deg]`,
-      'transition-all duration-200'
-    ].filter(Boolean).join(' ');
+  protected getBaseClasses() {
+    return classMap({
+      'opacity-50 cursor-not-allowed': this.disabled,
+      'transition-all duration-200': true,
+      [`text-[${this.color}]`]: true,
+      [`fill-[${this.color}]`]: true,
+      [`stroke-[${this.stroke}]`]: true,
+      [`stroke-[${this.strokeWidth}px]`]: true,
+      [`transform rotate-[${this.rotation}deg]`]: this.rotation !== 0
+    });
   }
 
+  protected getBaseStyles() {
+    return {
+      width: `${this.size}px`,
+      height: `${this.size}px`,
+      color: this.color,
+      stroke: this.stroke,
+      strokeWidth: `${this.strokeWidth}px`,
+      transform: `rotate(${this.rotation}deg)`
+    };
+  }
 } 

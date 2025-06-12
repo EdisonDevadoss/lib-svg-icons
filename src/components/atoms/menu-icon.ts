@@ -11,9 +11,7 @@ export class MenuIcon extends IconBase {
         class=${this.getBaseClasses()}
         title=${this.title}
         ?disabled=${this.disabled}
-      >
-        ${menuSvg}
-      </span>
+      >${menuSvg}</span>
     `;
   }
 }

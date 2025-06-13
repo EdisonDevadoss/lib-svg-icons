@@ -39,7 +39,7 @@ export class IconViewer extends LitElement {
   ];
   
   @state() private searchQuery = '';
-  @state() private selectedIcon: { name: string; svg: string } | null = null;
+  // @state() private selectedIcon: { name: string; svg: string } | null = null;
   @state() private toastMessage = '';
   @state() private showToast = false;
 
@@ -55,7 +55,7 @@ export class IconViewer extends LitElement {
   }
 
   private handleIconClick(icon: { name: string; svg: string }) {
-    this.selectedIcon = icon;
+    // this.selectedIcon = icon;
     this.copySvg(icon.name);
   }
 

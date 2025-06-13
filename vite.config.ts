@@ -1,9 +1,11 @@
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
-import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  plugins: [dts(), tailwindcss()],
+  plugins: [dts()],
+  css: {
+    postcss: './postcss.config.js'
+  },
   build: {
     lib: {
       entry: 'src/index.ts',

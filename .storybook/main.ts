@@ -14,6 +14,15 @@ const config: StorybookConfig = {
   "framework": {
     "name": "@storybook/web-components-vite",
     "options": {}
+  },
+  viteFinal: async (config) => {
+    return {
+      ...config,
+      optimizeDeps: {
+        ...config.optimizeDeps,
+        include: [...(config.optimizeDeps?.include ?? []), 'lit']
+      }
+    };
   }
 };
 export default config;

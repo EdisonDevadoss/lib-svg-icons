@@ -1,4 +1,9 @@
-module.exports = {
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./index.html",
+  ],
   safelist: [
     'text-[#b67070]',
     'text-[#1522d0]',
